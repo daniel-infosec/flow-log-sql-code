@@ -34,7 +34,7 @@ In this folder I provide some starter queries to search your flow logs for IOCs,
 
 ## Performance
 
-You know that Parks and Recs meme where Ron says bring him ALL the bacon they have? At Snowflake, we're like that with logs. So we have a LOT of flow logs. Last I checked it's PB per day. We also have a lot of compute nodes (VMs/instances/containers/etc). This means when we try and do some complex joins, we can run into performance issues. To resolve this, we have the following tricks.
+You know that Parks and Recs meme where Ron says bring him ALL the bacon they have? At Snowflake, we're like that with logs. So we have a LOT of flow logs. Last I checked it's many TB per day. We also have a lot of compute nodes (VMs/instances/containers/etc). This means when we try and do some complex joins, we can run into performance issues. To resolve this, we have the following tricks.
 
 1. Materialize some views into tables. This is useful if the view will be comptued multiple times. Recomputing a view can be expensive - querying a table is cheaper.
 2. Timebound queries. In general we'll timebound our queries/views (7 days, 30 days, 180 days, etc). We'll then label the views as such (e.g. AWS_VMS_30D, AWS_VMS_180D, etc) so that engineers know what's inside and can choose the right one for the analysis they're doing. Having fewer rows in joins can improve performance.
