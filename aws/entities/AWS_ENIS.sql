@@ -93,7 +93,7 @@ union_of_enis as (
     'config' as source
   from
     AWS_CONFIG
-  left outer join (select value, instance_id from {{ref('EC2_INSTANCES_30D_T')}}, lateral flatten(input => details['NetworkInterfaces'])) on value['NetworkInterfaceId'] = NETWORK_INTERFACE_ID
+  left outer join (select value, instance_id from aws_instances, lateral flatten(input => details['NetworkInterfaces'])) on value['NetworkInterfaceId'] = NETWORK_INTERFACE_ID
   where
     RESOURCE_TYPE = 'AWS::EC2::NetworkInterface'
   UNION
