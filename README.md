@@ -24,7 +24,7 @@ In this folder, we build a view of our flow logs for each CSP and then join that
 
 ### Entities
 
-We use AWS Config, GCP ??, and SnowAlert to collect information on what resources we have into our databases. My goal in this repo is to present free options for your use. I'm sure there's tons of other solutions from other vendors (Snowflake support in cloudquery when? :P) that would work. You'll just have to your flow log and entities schemas (and potentially other downstream queries).
+We use AWS Config, GCP asset inventory, and SnowAlert (in addition to some other vendors) to collect information on what resources we have into our databases. My goal in this repo is to present free options for your use. I'm sure there's tons of other solutions from other vendors (Snowflake support in cloudquery when? :P) that would work. You'll just have to your flow log and entities schemas (and potentially other downstream queries).
 
 We also assume you're using tags to categorize the purpose of your virtual machines and other resources. If you're not, these queries will not work out of the box. You'll have to identify how you know what purpose a VM has and then adjust the queries for that identifier.
 
